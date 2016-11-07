@@ -113,9 +113,10 @@ public class VoceDAO {
 		return res;
 	}
 	
-	public List<Voce> getVociPerUnaRubrica(String nome){
+	@SuppressWarnings("unchecked")
+	public List<Voce> _selectAll(){
 		
-		Rubrica r = null;
+		List<Voce> voci = null;
 		Session session=HibernateUtility.openSession();
 		Transaction tx=null;
 		
@@ -123,9 +124,8 @@ public class VoceDAO {
 	        tx=session.getTransaction();
 	        tx.begin();
 	        
-	        Query query = session.createQuery("from RubricaModel where nome =:nomeInserito");
-	        query.setString("nomeInserito", nome);
-	        r = (Rubrica) query.uniqueResult();
+	        Query query = session.createQuery("from Voce");
+	        voci = (List<Voce>)query.list();
 	        
 	        tx.commit(); 
             
@@ -136,7 +136,7 @@ public class VoceDAO {
 	         session.close();
 	    }
 	    
-		return r.getListaVoci();
+		return voci;
 		
 	}
 	
@@ -164,5 +164,6 @@ public class VoceDAO {
 		
 		return res;
     }
+  
 
 }

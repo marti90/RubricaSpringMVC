@@ -7,6 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h1> Registrazione Voce </h1>
+	<form action="/registraVoce.html" method="post">
+		<input type="text" name="nome">
+		<input type="text" name="cognome">
+		<input type="text" name="telefono">
+		
+		<input type="submit" value="Registra">
+	</form>
 
 </body>
 </html>
